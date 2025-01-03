@@ -1,16 +1,34 @@
+import java.util.*;
+
 public class recursionSolution1 {
-    public static void allOccurences(int arr[], int key, int i) {
-        if (i == arr.length) {
+    public static void allOccurance(int array[], int targetElement, int startingIndex){
+        if(array.length == startingIndex){
             return;
         }
-        if (arr[i] == key) {
-            System.out.print(i + " ");
+        if(array[startingIndex] == targetElement){
+            System.out.print(startingIndex + " ");
+
         }
-        allOccurences(arr, key, i + 1);
+        allOccurance(array, targetElement, startingIndex+1);
+}
+
+    public static void main(String args[]){
+        try(Scanner sc = new Scanner(System.in)){
+            System.out.print("Enter the number of elements you want to have in your array:");
+            int arraySize = sc.nextInt();
+            int sampleArray[] = new int[arraySize];
+            for(int i=0;i<sampleArray.length;i++){
+                System.out.print("Enter " + (i+1) + " element: " );
+                sampleArray[i] = sc.nextInt();
+            }
+            System.out.print("The sample array that you have enetered is: ");
+            for(int i=0;i<sampleArray.length;i++){
+                System.out.print(sampleArray[i] + " ");
+            }
+            int startingIndex = 0;
+            System.out.print("\nEnter the element you are looking for: ");
+            int targetElement = sc.nextInt();
+            allOccurance(sampleArray, targetElement, startingIndex);
+        }
     }
-    public static void main(String[]args)
-     { int arr[] = {3,2,4,5,6,2,7,2,2};
-     int key=2;
-     allOccurences(arr,key,0);
-     System.out.println();}
 }
